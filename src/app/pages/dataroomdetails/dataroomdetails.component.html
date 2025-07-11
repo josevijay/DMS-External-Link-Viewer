@@ -1,31 +1,35 @@
 <main class="app-content">
 
   <div class="mat-elevation-z8 pad_0">
-   
+
     <div class="data-room-header d-flex justify-between align-center pad_10">
       <!-- Left: Title + Expiry -->
-      <div class="d-flex align-center gap-3">
+      <div class="d-flex align-center gap-3" style="width: 100%;justify-content: space-between;">
         <app-commonheader [dataRoom]="dataRoom" style="cursor: pointer;"></app-commonheader>
-    
-        <div class="expires-info d-flex align-center gap-1">
-          <mat-icon class="calendar-icon small">calendar_today</mat-icon>
-          <span class="expire-label">{{ 'Expires' | translate }}</span>
-          <span class="expire-date">{{ dataRoom?.expirationDate | date: 'MMMM d, y' }}</span>
+
+        <div class="expires-info d-flex align-center gap-2">
+          <div> <mat-icon class="calendar-icon small">calendar_today</mat-icon></div>
+
+          <div>
+            <span class="expire-label">{{ 'Expires' | translate }}</span> 
+            <span class="expire-date" style="padding-left: 5px;">{{ dataRoom?.expirationDate | date: 'MMMM d, y' }}</span>
+          </div>
+
         </div>
 
 
 
-      
+
       </div>
 
 
-      
-  
- 
-<!-- [disabled]="!canAddDocuments" -->
-            <div class="data-room-actions" *ngIf="selectedTabIndex === 0">
 
-<!-- 
+
+
+      <!-- [disabled]="!canAddDocuments" -->
+
+
+      <!-- 
     <button mat-icon-button *ngIf="selectedTabIndex== 0 " (click)="toggleView()" title="Toggle View" class="toggle_inner_btn">
         <mat-icon style="color: #1e88e5;">{{
           selectedTabIndex === 0
@@ -34,277 +38,318 @@
           }}</mat-icon>
       </button> -->
 
-        <button class="btn btn-success btn-sm" (click)="openUploadModal()" 
-                [disabled]="!canAddDocuments"
-                >
-          <i class="las la-plus"></i> {{ 'Add Document' | translate }}
-        </button>
-      </div>
     </div>
 
-   
+
     <div class="section-box">
-    
-     
 
-    <ul class="nav nav-tabs custom-nav-tabs heads mt-3 d-flex align-items-center justify-content-between" id="myTab" role="tablist">
-  <div class="d-flex align-items-center">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab">
-        {{ 'DATA_ROOM_DETAILS.FILES_IN_THIS_DATA_ROOM' | translate }}
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab">
-        {{ 'DATA_ROOM_DETAILS.AUDIT_LOG' | translate }}
-      </button>
-    </li>
-  </div>
-  <li class="ms-auto" style="list-style: none;">
-    <div class="group" style="display: flex; align-items: center;">
-      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-      <input placeholder="Search" [(ngModel)]="searchTerm" (input)="applySearchToAllTabs()" type="search" class="input" style="margin-left: -10px; min-width: 180px;">
-    </div>
-  </li>
-</ul>
- 
+
+
+      <ul class="nav nav-tabs custom-nav-tabs heads mt-2 d-flex align-items-center justify-content-between" id="myTab"
+        role="tablist">
+        <div class="d-flex align-items-center">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending"
+              type="button" role="tab">
+              {{ 'DATA_ROOM_DETAILS.FILES_IN_THIS_DATA_ROOM' | translate }}
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button"
+              role="tab">
+              {{ 'DATA_ROOM_DETAILS.AUDIT_LOG' | translate }}
+            </button>
+          </li>
+        </div>
+        <li class="ms-auto" style="list-style: none;">
+          <div class="group" style="display: flex; align-items: center;">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+              <g>
+                <path
+                  d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                </path>
+              </g>
+            </svg>
+            <input placeholder="Search" [(ngModel)]="searchTerm" (input)="applySearchToAllTabs()" type="search"
+              class="input" style="margin-left: -10px; min-width: 180px;">
+          </div>
+        </li>
+
+        <li>
+          <!-- <div class="data-room-actions" *ngIf="selectedTabIndex === 0">
+
+            <button class="btn btn-success btn-sm" (click)="openUploadModal()" [disabled]="!canAddDocuments">
+              <i class="las la-plus"></i> {{ 'Add Document' | translate }}
+            </button>
+          </div> -->
+
+        <li>
+          <div class="data-room-actions" *ngIf="selectedTabIndex === 0">
+            <button (click)="openUploadModal()" [disabled]="!canAddDocuments" class="icon-square"
+              aria-label="Add Document">
+              <i class="las la-plus"></i>
+            </button>
+          </div>
+        </li>
+      </ul>
+
       <div class="tab-content custom-tab-content mt-2" id="approvalTabsContent">
 
-  <!-- My Pending Approvals Tab -->
-  <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+        <!-- My Pending Approvals Tab -->
+        <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
 
-<ng-container *ngIf="filteredDataRooms.length > 0; else noDataForFiles">
+          <ng-container *ngIf="filteredDataRooms.length > 0; else noDataForFiles">
 
-  <div class="table-container table-container-approval-transaction">
+            <div class="table-container table-container-approval-transaction">
 
-    <!-- List View Table -->
-    <table *ngIf="isListView"
-           mat-table
-           [dataSource]="pagedDataRooms"
-           matSort
-           class="table"
-           #sort="matSort"
-           [matSortActive]="activeSort"
-           [matSortDirection]="sortDirection"
-           (matSortChange)="onSortChange($event)">
+              <!-- List View Table -->
+              <table *ngIf="isListView" mat-table [dataSource]="pagedDataRooms" matSort class="table" #sort="matSort"
+                [matSortActive]="activeSort" [matSortDirection]="sortDirection" (matSortChange)="onSortChange($event)">
 
-      <!-- File Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <span class="d-none d-md-inline">{{ 'DATA_ROOM_DETAILS.NAME' | translate }}</span>
-          <span class="d-md-none">{{ 'DATA_ROOM_DETAILS.NAME_SHORT' | translate }}</span>
-        </th>
-        <td mat-cell *matCellDef="let file">
-          <ng-container *ngIf="getFileExtension(file.document.url) as extension">
-            <img *ngIf="extension === 'pdf'" src="assets/images/login_banner/pdf.png" alt="PDF" width="20px" [title]="'DATA_ROOM_DETAILS.PDF' | translate" />
-            <img *ngIf="extension === 'doc' || extension === 'docx'" src="assets/images/svg/word.svg" alt="Word" width="20px" [title]="'DATA_ROOM_DETAILS.DOC' | translate" />
-            <img *ngIf="extension === 'xls' || extension === 'xlsx'" src="assets/images/svg/excel.svg" alt="Excel" width="20px" [title]="'DATA_ROOM_DETAILS.EXCEL' | translate" />
-            <img *ngIf="extension === 'ppt' || extension === 'pptx'" src="assets/images/svg/ppt.svg" alt="PPT" width="20px" [title]="'DATA_ROOM_DETAILS.PPT' | translate" />
-            <img *ngIf="extension === 'csv' || extension === 'txt'" src="assets/images/svg/text-2.svg" alt="Text" width="20px" [title]="'DATA_ROOM_DETAILS.TEXT' | translate" />
-          </ng-container>
-          <img *ngIf="isAudioFile(file.document.url)" src="assets/images/svg/mp3.svg" alt="Audio" width="20px" [title]="'DATA_ROOM_DETAILS.AUDIO' | translate" />
-          <img *ngIf="isVideoFile(file.document.url)" src="assets/images/svg/mp4.svg" alt="Video" width="20px" [title]="'DATA_ROOM_DETAILS.VIDEO' | translate" />
-          <img *ngIf="isImageFile(file.document.url)" src="assets/images/login_banner/img.png" alt="Image" width="20px" [title]="'DATA_ROOM_DETAILS.IMAGE' | translate" />
-          
-        <span class="truncate-data p-2 pointer-hover" [title]="file.document.name">
-  {{ file.document.name | slice: 0:15 }}{{ file.document.name.length > 15 ? '...' : '' }}
-</span>
+                <!-- File Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <span class="d-none d-md-inline">{{ 'DATA_ROOM_DETAILS.NAME' | translate }}</span>
+                    <span class="d-md-none">{{ 'DATA_ROOM_DETAILS.NAME_SHORT' | translate }}</span>
+                  </th>
+                  <td mat-cell *matCellDef="let file">
+                    <ng-container *ngIf="getFileExtension(file.document.url) as extension">
+                      <img *ngIf="extension === 'pdf'" src="assets/images/login_banner/pdf.png" alt="PDF" width="20px"
+                        [title]="'DATA_ROOM_DETAILS.PDF' | translate" />
+                      <img *ngIf="extension === 'doc' || extension === 'docx'" src="assets/images/svg/word.svg"
+                        alt="Word" width="20px" [title]="'DATA_ROOM_DETAILS.DOC' | translate" />
+                      <img *ngIf="extension === 'xls' || extension === 'xlsx'" src="assets/images/svg/excel.svg"
+                        alt="Excel" width="20px" [title]="'DATA_ROOM_DETAILS.EXCEL' | translate" />
+                      <img *ngIf="extension === 'ppt' || extension === 'pptx'" src="assets/images/svg/ppt.svg" alt="PPT"
+                        width="20px" [title]="'DATA_ROOM_DETAILS.PPT' | translate" />
+                      <img *ngIf="extension === 'csv' || extension === 'txt'" src="assets/images/svg/text-2.svg"
+                        alt="Text" width="20px" [title]="'DATA_ROOM_DETAILS.TEXT' | translate" />
+                    </ng-container>
+                    <img *ngIf="isAudioFile(file.document.url)" src="assets/images/svg/mp3.svg" alt="Audio" width="20px"
+                      [title]="'DATA_ROOM_DETAILS.AUDIO' | translate" />
+                    <img *ngIf="isVideoFile(file.document.url)" src="assets/images/svg/mp4.svg" alt="Video" width="20px"
+                      [title]="'DATA_ROOM_DETAILS.VIDEO' | translate" />
+                    <img *ngIf="isImageFile(file.document.url)" src="assets/images/login_banner/img.png" alt="Image"
+                      width="20px" [title]="'DATA_ROOM_DETAILS.IMAGE' | translate" />
 
-        </td>
-      </ng-container>
+                    <span class="truncate-data p-2 pointer-hover" [title]="file.document.name">
+                      {{ file.document.name | slice: 0:15 }}{{ file.document.name.length > 15 ? '...' : '' }}
+                    </span>
 
-      <!-- Size Column -->
-      <ng-container matColumnDef="size">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <span class="d-none d-md-inline">{{ 'DATA_ROOM_DETAILS.SIZE' | translate }}</span>
-          <span class="d-md-none">{{ 'DATA_ROOM_DETAILS.SIZE_SHORT' | translate }}</span>
-        </th>
-        <td mat-cell *matCellDef="let file"> {{ formatFileSize(file.document.documentSize) || '0 KB' }} </td>
-      </ng-container>
+                  </td>
+                </ng-container>
 
-      <!-- Type Column -->
-      <ng-container matColumnDef="docType">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.TYPE' | translate }}</th>
-        <td mat-cell *matCellDef="let file"> {{ file.document.docType }} </td>
-      </ng-container>
+                <!-- Size Column -->
+                <ng-container matColumnDef="size">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <span class="d-none d-md-inline">{{ 'DATA_ROOM_DETAILS.SIZE' | translate }}</span>
+                    <span class="d-md-none">{{ 'DATA_ROOM_DETAILS.SIZE_SHORT' | translate }}</span>
+                  </th>
+                  <td mat-cell *matCellDef="let file"> {{ formatFileSize(file.document.documentSize) || '0 KB' }} </td>
+                </ng-container>
 
-      <!-- Permission Column -->
-      <ng-container matColumnDef="permission">
-        <th mat-header-cell *matHeaderCellDef>{{ 'DATA_ROOM_DETAILS.PERMISSION' | translate }}</th>
-        <td mat-cell *matCellDef="let file"> {{ file.documentPermission }} </td>
-      </ng-container>
+                <!-- Type Column -->
+                <ng-container matColumnDef="docType">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.TYPE' | translate }}</th>
+                  <td mat-cell *matCellDef="let file"> {{ file.document.docType }} </td>
+                </ng-container>
 
-      <!-- Created Date Column -->
-      <ng-container matColumnDef="createdDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.CREATED_DATE' | translate }}</th>
-        <td mat-cell *matCellDef="let file"> {{ file.document.createdDate | date: 'MMMM dd, y' }} </td>
-      </ng-container>
+                <!-- Permission Column -->
+                <ng-container matColumnDef="permission">
+                  <th mat-header-cell *matHeaderCellDef>{{ 'DATA_ROOM_DETAILS.PERMISSION' | translate }}</th>
+                  <td mat-cell *matCellDef="let file"> {{ file.documentPermission }} </td>
+                </ng-container>
 
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>{{ 'DATA_ROOM_DETAILS.ACTIONS' | translate }}</th>
-        <td mat-cell *matCellDef="let file">
-          <ng-container *ngIf="file.permissionFlags as perms">
-            <button mat-icon-button matTooltip="{{ 'DATA_ROOM_DETAILS.DOWNLOAD' | translate }}" [disabled]="!perms.canDownload" (click)="downloadDocument(file.document)">
-              <mat-icon class="download-icon">download</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="{{ 'DATA_ROOM_DETAILS.EDIT' | translate }}" [disabled]="true" (click)="editFile(file)">
-              <mat-icon class="edit-icon">edit</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="{{ 'DATA_ROOM_DETAILS.DELETE' | translate }}" [disabled]="!perms.canDelete" (click)="deleteFile(file)">
-              <mat-icon class="delete-icon">delete</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="{{ 'DATA_ROOM_DETAILS.VIEW' | translate }}" [disabled]="!perms.canView" (click)="viewFile(file)">
-              <mat-icon class="view-icon">visibility</mat-icon>
-            </button>
-          </ng-container>
-        </td>
-      </ng-container>
+                <!-- Created Date Column -->
+                <ng-container matColumnDef="createdDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.CREATED_DATE' | translate
+                    }}</th>
+                  <td mat-cell *matCellDef="let file"> {{ file.document.createdDate | date: 'MMMM dd, y' }} </td>
+                </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+                <!-- Actions Column -->
+                <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef>{{ 'DATA_ROOM_DETAILS.ACTIONS' | translate }}</th>
+                  <td mat-cell *matCellDef="let file">
+                    <ng-container *ngIf="file.permissionFlags as perms">
+                      <button mat-icon-button matTooltip="{{ 'DATA_ROOM_DETAILS.DOWNLOAD' | translate }}"
+                        [disabled]="!perms.canDownload" (click)="downloadDocument(file.document)">
+                        <mat-icon class="download-icon">download</mat-icon>
+                      </button>
+                      <button mat-icon-button matTooltip="{{ 'DATA_ROOM_DETAILS.EDIT' | translate }}" [disabled]="true"
+                        (click)="editFile(file)">
+                        <mat-icon class="edit-icon">edit</mat-icon>
+                      </button>
+                      <button mat-icon-button matTooltip="{{ 'DATA_ROOM_DETAILS.DELETE' | translate }}"
+                        [disabled]="!perms.canDelete" (click)="deleteFile(file)">
+                        <mat-icon class="delete-icon">delete</mat-icon>
+                      </button>
+                      <button mat-icon-button matTooltip="{{ 'DATA_ROOM_DETAILS.VIEW' | translate }}"
+                        [disabled]="!perms.canView" (click)="viewFile(file)">
+                        <mat-icon class="view-icon">visibility</mat-icon>
+                      </button>
+                    </ng-container>
+                  </td>
+                </ng-container>
 
-    <!-- Grid View -->
-    <div *ngIf="!isListView" class="mdc-data-table__content">
-      <mat-grid-list cols="{{numCols}}" rowHeight="{{rowHeight}}" [gutterSize]="gutterSize">
-        <mat-grid-tile *ngFor="let file of filteredDataRooms">
-          <mat-card fxFlexFill fxLayoutAlign="center center" class="item-bg"
-            style="background-color: transparent; box-shadow: none;">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-              <!-- File Type Icon -->
-              <ng-container [ngSwitch]="getFileExtension(file.document.url)">
-                <img *ngSwitchCase="'pdf'" src="assets/images/login_banner/pdf.png" alt="PDF" class="img_size" [title]="'DATA_ROOM_DETAILS.PDF' | translate" />
-                <img *ngSwitchCase="'doc'" src="assets/images/svg/word.svg" alt="Word" class="img_size" [title]="'DATA_ROOM_DETAILS.DOC' | translate" />
-                <img *ngSwitchCase="'docx'" src="assets/images/svg/word.svg" alt="Word" class="img_size" [title]="'DATA_ROOM_DETAILS.DOC' | translate" />
-                <img *ngSwitchCase="'xls'" src="assets/images/svg/excel.svg" alt="Excel" class="img_size" [title]="'DATA_ROOM_DETAILS.EXCEL' | translate" />
-                <img *ngSwitchCase="'xlsx'" src="assets/images/svg/excel.svg" alt="Excel" class="img_size" [title]="'DATA_ROOM_DETAILS.EXCEL' | translate" />
-                <img *ngSwitchCase="'ppt'" src="assets/images/svg/ppt.svg" alt="PPT" class="img_size" [title]="'DATA_ROOM_DETAILS.PPT' | translate" />
-                <img *ngSwitchCase="'pptx'" src="assets/images/svg/ppt.svg" alt="PPT" class="img_size" [title]="'DATA_ROOM_DETAILS.PPT' | translate" />
-                <img *ngSwitchCase="'csv'" src="assets/images/svg/text-2.svg" alt="Text" class="img_size" [title]="'DATA_ROOM_DETAILS.TEXT' | translate" />
-                <img *ngSwitchCase="'txt'" src="assets/images/svg/text-2.svg" alt="Text" class="img_size" [title]="'DATA_ROOM_DETAILS.TEXT' | translate" />
-              </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
 
-              <img *ngIf="isAudioFile(file.document.url)" src="assets/images/svg/mp3.svg" alt="Audio" class="img_size" [title]="'DATA_ROOM_DETAILS.AUDIO' | translate" />
-              <img *ngIf="isVideoFile(file.document.url)" src="assets/images/svg/mp4.svg" alt="Video" class="img_size" [title]="'DATA_ROOM_DETAILS.VIDEO' | translate" />
-              <img *ngIf="isImageFile(file.document.url)" src="assets/images/login_banner/img.png" alt="Image" class="img_size" [title]="'DATA_ROOM_DETAILS.IMAGE' | translate" />
+              <!-- Grid View -->
+              <div *ngIf="!isListView" class="mdc-data-table__content">
+                <mat-grid-list cols="{{numCols}}" rowHeight="{{rowHeight}}" [gutterSize]="gutterSize">
+                  <mat-grid-tile *ngFor="let file of filteredDataRooms">
+                    <mat-card fxFlexFill fxLayoutAlign="center center" class="item-bg"
+                      style="background-color: transparent; box-shadow: none;">
+                      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                        <!-- File Type Icon -->
+                        <ng-container [ngSwitch]="getFileExtension(file.document.url)">
+                          <img *ngSwitchCase="'pdf'" src="assets/images/login_banner/pdf.png" alt="PDF" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.PDF' | translate" />
+                          <img *ngSwitchCase="'doc'" src="assets/images/svg/word.svg" alt="Word" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.DOC' | translate" />
+                          <img *ngSwitchCase="'docx'" src="assets/images/svg/word.svg" alt="Word" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.DOC' | translate" />
+                          <img *ngSwitchCase="'xls'" src="assets/images/svg/excel.svg" alt="Excel" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.EXCEL' | translate" />
+                          <img *ngSwitchCase="'xlsx'" src="assets/images/svg/excel.svg" alt="Excel" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.EXCEL' | translate" />
+                          <img *ngSwitchCase="'ppt'" src="assets/images/svg/ppt.svg" alt="PPT" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.PPT' | translate" />
+                          <img *ngSwitchCase="'pptx'" src="assets/images/svg/ppt.svg" alt="PPT" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.PPT' | translate" />
+                          <img *ngSwitchCase="'csv'" src="assets/images/svg/text-2.svg" alt="Text" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.TEXT' | translate" />
+                          <img *ngSwitchCase="'txt'" src="assets/images/svg/text-2.svg" alt="Text" class="img_size"
+                            [title]="'DATA_ROOM_DETAILS.TEXT' | translate" />
+                        </ng-container>
 
-              <!-- File Name and Size -->
-              <div>
-                <span class="truncate-data p-2 pointer-hover" [matTooltip]="file.document.name" [title]="file.document.name">
-                  {{ file.document.name }}
-                </span>
-                <div class="document-size">
-                  {{ formatFileSize(file.document.documentSize) || '0 KB' }}
-                </div>
+                        <img *ngIf="isAudioFile(file.document.url)" src="assets/images/svg/mp3.svg" alt="Audio"
+                          class="img_size" [title]="'DATA_ROOM_DETAILS.AUDIO' | translate" />
+                        <img *ngIf="isVideoFile(file.document.url)" src="assets/images/svg/mp4.svg" alt="Video"
+                          class="img_size" [title]="'DATA_ROOM_DETAILS.VIDEO' | translate" />
+                        <img *ngIf="isImageFile(file.document.url)" src="assets/images/login_banner/img.png" alt="Image"
+                          class="img_size" [title]="'DATA_ROOM_DETAILS.IMAGE' | translate" />
+
+                        <!-- File Name and Size -->
+                        <div>
+                          <span class="truncate-data p-2 pointer-hover" [matTooltip]="file.document.name"
+                            [title]="file.document.name">
+                            {{ file.document.name }}
+                          </span>
+                          <div class="document-size">
+                            {{ formatFileSize(file.document.documentSize) || '0 KB' }}
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </mat-card>
+                  </mat-grid-tile>
+                </mat-grid-list>
               </div>
 
-            
             </div>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div>
 
-  </div>
+            <!-- Paginator -->
+            <mat-paginator *ngIf="filteredDataRooms.length > 10" [length]="filteredDataRooms.length" [pageSize]="pageSize" [pageSizeOptions]="[10, 20, 30]"
+              showFirstLastButtons
+              (page)="currentPage = $event.pageIndex; pageSize = $event.pageSize; updatePagedData()">
+            </mat-paginator>
 
-  <!-- Paginator -->
-  <mat-paginator
-    [length]="filteredDataRooms.length"
-    [pageSize]="pageSize"
-    [pageSizeOptions]="[10, 20, 30]"
-    showFirstLastButtons
-    (page)="currentPage = $event.pageIndex; pageSize = $event.pageSize; updatePagedData()">
-  </mat-paginator>
+          </ng-container>
 
-</ng-container>
+          <!-- No Data Message -->
+          <ng-template #noDataForFiles>
+            <div class="no-data-message text-center py-4">
+              <img src="assets/images/nodata.svg" alt="No Data Found" class="no-data-new-message" height="211" />
+              <div>{{ 'NO_DATA_FOUND' | translate }}</div>
+            </div>
+          </ng-template>
 
-<!-- No Data Message -->
-<ng-template #noDataForFiles>
-  <div class="no-data-message text-center py-4">
-    <img src="assets/images/nodata.svg" alt="No Data Found" class="no-data-new-message" height="211" />
-    <div>{{ 'NO_DATA_FOUND' | translate }}</div>
-  </div>
-</ng-template>
+        </div>
 
-  </div>
+        <!-- My Approval History Tab -->
+        <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
 
-  <!-- My Approval History Tab -->
-  <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+          <ng-container *ngIf="filteredAuditLogs.length > 0; else noDataForauditLogs">
+            <div class="table-container">
+              <table mat-table [dataSource]="pagedAuditLogs" matSort class="table" #auditSort="matSort"
+                [matSortActive]="auditActiveSort" [matSortDirection]="auditSortDirection"
+                (matSortChange)="onAuditSortChange($event)">
+                <!-- Data Room Name Column -->
+                <ng-container matColumnDef="dataRoomName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <span class="d-none d-md-inline">{{ 'DATA_ROOM_DETAILS.DATA_ROOM' | translate }}</span>
+                    <span class="d-md-none">{{ 'DATA_ROOM_DETAILS.DATA_ROOM_SHORT' | translate }}</span>
+                  </th>
+                  <td mat-cell *matCellDef="let log">{{ log.dataRoomName }}</td>
+                </ng-container>
 
-     <ng-container *ngIf="filteredAuditLogs.length > 0; else noDataForauditLogs">
-  <div class="table-container">
-       <table mat-table [dataSource]="pagedAuditLogs" matSort class="table" #auditSort="matSort" [matSortActive]="auditActiveSort" [matSortDirection]="auditSortDirection" (matSortChange)="onAuditSortChange($event)">
-            <!-- Data Room Name Column -->
-            <ng-container matColumnDef="dataRoomName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                <span class="d-none d-md-inline">{{ 'DATA_ROOM_DETAILS.DATA_ROOM' | translate }}</span>
-                <span class="d-md-none">{{ 'DATA_ROOM_DETAILS.DATA_ROOM_SHORT' | translate }}</span>
-              </th>
-              <td mat-cell *matCellDef="let log">{{ log.dataRoomName }}</td>
-            </ng-container>
-    
-            <!-- Document Name Column -->
-            <ng-container matColumnDef="documentName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.FILE_INFO' | translate }}</th>
-              <td mat-cell *matCellDef="let log">{{ log.documentName }}</td>
-            </ng-container>
-    
-            <!-- User Name Column -->
-            <ng-container matColumnDef="UserName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.USER_NAME' | translate }}</th>
-              <td mat-cell *matCellDef="let log">{{ log.UserName }}</td>
-            </ng-container>
-    
-            <!-- Action Name Column -->
-            <ng-container matColumnDef="actionName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.ACTION' | translate }}</th>
-              <td mat-cell *matCellDef="let log">{{ log.actionName }}</td>
-            </ng-container>
-    
-            <!-- Created By Column -->
-            <ng-container matColumnDef="actionBy">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.ACTION_BY' | translate }}</th>
-              <td mat-cell *matCellDef="let log">{{ log.actionBy }}</td>
-            </ng-container>
-    
-            <!-- Created Date Column -->
-            <ng-container matColumnDef="actionDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.CREATED_DATE' | translate }}</th>
-              <td mat-cell *matCellDef="let log">{{ log.actionDate | date:'MMMM dd, y' }}</td>
-            </ng-container>
-    
-            <!-- Header and Row Definitions -->
-            <tr mat-header-row *matHeaderRowDef="auditDisplayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: auditDisplayedColumns;"></tr>
-          </table>
-    
-  </div>
+                <!-- Document Name Column -->
+                <ng-container matColumnDef="documentName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.FILE_INFO' | translate }}
+                  </th>
+                  <td mat-cell *matCellDef="let log">{{ log.documentName }}</td>
+                </ng-container>
 
-  <mat-paginator
-    [length]="filteredAuditLogs.length"
-    [pageSize]="auditPageSize"
-    [pageSizeOptions]="[10, 20, 30]"
-    showFirstLastButtons
-    (page)="auditCurrentPage = $event.pageIndex; auditPageSize = $event.pageSize; updatePagedAuditLogs()"
-  >
-  </mat-paginator>
+                <!-- User Name Column -->
+                <ng-container matColumnDef="UserName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.USER_NAME' | translate }}
+                  </th>
+                  <td mat-cell *matCellDef="let log">{{ log.UserName }}</td>
+                </ng-container>
 
-  </ng-container>
+                <!-- Action Name Column -->
+                <ng-container matColumnDef="actionName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.ACTION' | translate }}
+                  </th>
+                  <td mat-cell *matCellDef="let log">{{ log.actionName }}</td>
+                </ng-container>
+
+                <!-- Created By Column -->
+                <ng-container matColumnDef="actionBy">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.ACTION_BY' | translate }}
+                  </th>
+                  <td mat-cell *matCellDef="let log">{{ log.actionBy }}</td>
+                </ng-container>
+
+                <!-- Created Date Column -->
+                <ng-container matColumnDef="actionDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'DATA_ROOM_DETAILS.CREATED_DATE' | translate
+                    }}</th>
+                  <td mat-cell *matCellDef="let log">{{ log.actionDate | date:'MMMM dd, y' }}</td>
+                </ng-container>
+
+                <!-- Header and Row Definitions -->
+                <tr mat-header-row *matHeaderRowDef="auditDisplayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: auditDisplayedColumns;"></tr>
+              </table>
+
+            </div>
+
+            <mat-paginator *ngIf="filteredAuditLogs.length > 10" [length]="filteredAuditLogs.length" [pageSize]="auditPageSize"
+              [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons
+              (page)="auditCurrentPage = $event.pageIndex; auditPageSize = $event.pageSize; updatePagedAuditLogs()">
+            </mat-paginator>
+
+          </ng-container>
 
 
-     <ng-template #noDataForauditLogs>
-    <div class="no-data-message" style="text-align:center; padding: 40px 0;">
-      <img src="assets/images/nodata.svg" alt="No Data Found" class="no-data-new-message" style="    height: 211px;" />
-      <div>{{ 'NO_DATA_FOUND' | translate }}</div>
-    </div>
-  </ng-template>
-</div>
-</div>
-    
-    
-    
-    
+          <ng-template #noDataForauditLogs>
+            <div class="no-data-message" style="text-align:center; padding: 40px 0;">
+              <img src="assets/images/nodata.svg" alt="No Data Found" class="no-data-new-message"
+                style="    height: 211px;" />
+              <div>{{ 'NO_DATA_FOUND' | translate }}</div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+
+
+
 
 
 
@@ -313,6 +358,3 @@
     </div>
   </div>
 </main>
-
-
-

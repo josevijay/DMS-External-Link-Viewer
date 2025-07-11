@@ -19,7 +19,7 @@
   z-index: 1000;
 
 }
- 
+
 /* Left Section */
 
 .left-section {
@@ -31,13 +31,13 @@
   gap: 1rem;
 
 }
- 
+
 .logo-img {
 
   height: 40px;
 
 }
- 
+
 .menu-toggle {
 
   background: none;
@@ -51,7 +51,7 @@
   color: #333;
 
 }
- 
+
 /* Center Section */
 
 .center-section {
@@ -63,13 +63,13 @@
   justify-content: center;
 
 }
- 
+
 .search-box {
 
   position: relative;
 
 }
- 
+
 .search-box input {
 
   padding: 0.4rem 2rem 0.4rem 0.75rem;
@@ -81,7 +81,7 @@
   min-width: 250px;
 
 }
- 
+
 .search-icon {
 
   position: absolute;
@@ -95,7 +95,7 @@
   color: #888;
 
 }
- 
+
 /* Right Section */
 
 .right-section {
@@ -107,7 +107,7 @@
   gap: 0.5rem;
 
 }
- 
+
 .profile-img {
 
   width: 40px;
@@ -117,15 +117,16 @@
   border-radius: 50%;
 
 }
- 
+
 .profile-info .name {
 
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 13px;
 
   color: #333;
 
 }
- 
+
 .profile-info .role {
 
   font-size: 0.8rem;
@@ -134,7 +135,7 @@
 
 }
 
- 
+
 
 .notification-container {
   position: relative;
@@ -148,7 +149,7 @@
   color: #555;
 
 
-   display: flex;
+  display: flex;
 
   align-items: center;
 

@@ -1,8 +1,10 @@
 
 
 
-<div class="table-container">
+
   <ng-container *ngIf="pagedDataRooms.length > 0; else noData">
+
+    <div class="table-container table-container-approval-active">
     <table mat-table [dataSource]="pagedDataRooms" matSort class="table" [matSortActive]="activeSort" [matSortDirection]="sortDirection" (matSortChange)="onSortChange($event)">
       <!-- Name Column -->
       <ng-container matColumnDef="name">
@@ -60,7 +62,8 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator
+  </div>
+    <mat-paginator *ngIf="filteredDataRooms.length > 10"
       [length]="filteredDataRooms.length"
       [pageSize]="pageSize"
       [pageSizeOptions]="[10, 20, 30]"
@@ -76,4 +79,3 @@
       <div>{{ 'NO_DATA_FOUND' | translate }}</div>
     </div>
   </ng-template>
-</div>

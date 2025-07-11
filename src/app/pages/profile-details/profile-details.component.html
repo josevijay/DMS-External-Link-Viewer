@@ -1,5 +1,10 @@
-<div class="edit-profile">
-  <div class="profile-container" style=" margin: 40px auto;border-radius: 12px; box-shadow: 0 2px 16px rgba(60,80,180,0.08); padding: 32px;">
+
+
+<!-- <div class="mat-elevation-z8"> -->
+
+
+<div class="edit-profile mat-elevation-z8">
+  <div class="profile-container" style=" border-radius: 12px; padding: 15px;">
     <div class="section-header">
       <h2 style="margin-bottom: 24px; text-align: center;">Profile Details</h2>
     </div>
@@ -109,15 +114,18 @@
 
 
 
-          <div class="form-actions" style="text-align: center; margin-top: 24px;">
+          <div class="form-actions" style="text-align: start; margin-top: 24px;">
             <button class="btn btn-success btn-sm" style="margin-right: 12px;" type="submit" [disabled]="userDetails.user.password && newPassword && userDetails.user.password === newPassword"
   [ngClass]="{'btn-disabled': userDetails.user.password && newPassword && userDetails.user.password === newPassword}">
   <i class="fas fa-save"></i> Save
 </button>
-            <!-- <button class="btn btn-danger btn-sm" type="button"><i class="fas fa-times-circle"></i> Cancel</button> -->
+            <button class="btn btn-danger btn-sm" type="button"><i class="fas fa-times-circle"></i> Cancel</button>
           </div>
         </form>
       </ng-container>
     </div>
   </div>
 </div>
+
+
+<!-- </div> -->

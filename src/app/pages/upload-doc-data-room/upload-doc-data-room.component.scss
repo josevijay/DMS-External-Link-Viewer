@@ -1033,7 +1033,7 @@ input.mat-chip-input {
 .drag-drop-container {
   border: 1px solid #ccc !important;
   border-radius: 0 !important;
-  padding: 10px;
+  padding: 24px;
   text-align: center;
   background-color: #fff !important;
   cursor: pointer;
@@ -1041,7 +1041,6 @@ input.mat-chip-input {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-
 
 
   .drag-drop-text {
@@ -1066,6 +1065,12 @@ input.mat-chip-input {
   }
 
 }
+
+ ::ng-deep .mat-mdc-dialog-container .mdc-dialog__container {
+    width: 60vw;
+    transition-duration: var(--mat-dialog-transition-duration, 0ms);
+}
+
 
 
 .drag-drop-container.dragging {
